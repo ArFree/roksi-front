@@ -56,7 +56,11 @@ export const Select = () => {
         {option.map((item) => (
           <button 
             key={item.id}
-            className={selectedItems.some(selectedItem => selectedItem.id === item.id) ? "select__container select__container--selected" : "select__container"}
+            className={
+              selectedItems.some(selectedItem => selectedItem.id === item.id) 
+              ? "select__container select__container--selected" 
+              : "select__container"
+            }
             onClick={() => handleSelectClick(item)}
           >
             {languageReducer.language ? item.name_eng : item.name}

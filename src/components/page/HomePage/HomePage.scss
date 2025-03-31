@@ -95,12 +95,12 @@
     @include onPhoneMini {
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url("../../../img/Paragraph.png");
+      background-image: url("../../../img/life.svg");
       width: 98px;
       height: 44px;
       position: absolute;
       z-index: 1;
-      bottom: 200px;
+      bottom: 225px;
       right: 0;
     }
   }
@@ -167,8 +167,8 @@
   &__button {
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    justify-content:first baseline;
     align-items: center;
     padding: 9px 13px;
     background-color: $yellow;
@@ -185,17 +185,17 @@
    }
 
     &--text {
-      margin: 0;
+      margin: 0 0 0 32px;
       width: max-content;
       font-size: 21px;
       font-style: normal;
       font-weight: 500;
       line-height: 120%;
       color: $blackColor;
-      margin-right: 85px;
 
       @include onPhone {
-        margin-right: 55px;
+        margin-left: 28px;
+        margin-right: 0;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;

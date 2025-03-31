@@ -9,7 +9,7 @@ import { store } from "../app/store";
 import { addRegistrationAction } from "../app/slice/RegistrSlice";
 
 export async function getApi(): Promise<ApiInterface[]> {
-  const apiUrl = 'https://roksi-back.fly.dev/api/products/';
+  const apiUrl = 'https://localhost/8000/api/products/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -33,7 +33,7 @@ export const LogOut = async (access) => {
       refresh: access,
     };
 
-    const url = 'https://roksi-back.fly.dev/api/user/logout/';
+    const url = 'https://localhost:8000/api/user/logout/';
     await axios.post(url, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const LogOut = async (access) => {
 };
 
 export async function getChart(): Promise<CartItem> {
-  const apiUrl = 'https://roksi-back.fly.dev/api/cart/';
+  const apiUrl = 'http://localhost:8000/api/cart/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -67,7 +67,7 @@ export async function getChart(): Promise<CartItem> {
 
 
 export async function getUser(access: string, dispatch): Promise<UserType | undefined> {
-  const apiUrl = 'https://roksi-back.fly.dev/api/user/me/';
+  const apiUrl = 'https://localhost/8000/api/user/me/';
   const headers = {
     Authorize: `Bearer ${access}`,
   };
