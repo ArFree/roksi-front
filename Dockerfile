@@ -1,44 +1,29 @@
-# syntax = docker/dockerfile:1
+# Frontend Dockerfile
+FROM node:18-alpine as build
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=18.16.0
-FROM node:${NODE_VERSION}-slim as base
-
-LABEL fly_launch_runtime="NodeJS"
-
-# NodeJS app lives here
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV=production
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
+RUN npm ci
 
+# Copy the rest of the code
+COPY . .
 
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Install packages needed to build node modules
-RUN apt-get update -qq && \
-    apt-get install -y python-is-python3 pkg-config build-essential 
-
-# Install node modules
-COPY --link package.json package-lock.json .
-RUN npm install --production=false
-
-# Copy application code
-COPY --link . .
-
-# Build application
+# Build the app
 RUN npm run build
 
-# Remove development dependencies
-RUN npm prune --production
+# Production stage
+FROM nginx:alpine
 
+# Copy the build output
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Final stage for app image
-FROM base
+# Copy nginx configuration
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Copy built application
-COPY --from=build /app /app
+# Expose port 80
+EXPOSE 80
 
-# Start the server by default, this can be overwritten at runtime
-CMD [ "npm", "run", "start" ]
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
