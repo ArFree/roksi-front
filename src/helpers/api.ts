@@ -9,7 +9,7 @@ import { store } from "../app/store";
 import { addRegistrationAction } from "../app/slice/RegistrSlice";
 
 export async function getApi(): Promise<ApiInterface[]> {
-  const apiUrl = 'https://localhost/8000/api/products/';
+  const apiUrl = 'https://roksiart-gallery.shop/api/products/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -33,7 +33,7 @@ export const LogOut = async (access) => {
       refresh: access,
     };
 
-    const url = 'https://localhost:8000/api/user/logout/';
+    const url = 'https://roksiart-gallery.shop/api/user/logout/';
     await axios.post(url, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const LogOut = async (access) => {
 };
 
 export async function getChart(): Promise<CartItem> {
-  const apiUrl = 'http://localhost:8000/api/cart/';
+  const apiUrl = 'https://roksiart-gallery.shop/api/cart/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -67,7 +67,7 @@ export async function getChart(): Promise<CartItem> {
 
 
 export async function getUser(access: string, dispatch): Promise<UserType | undefined> {
-  const apiUrl = 'https://localhost/8000/api/user/me/';
+  const apiUrl = 'https://roksiart-gallery.shop/api/user/me/';
   const headers = {
     Authorize: `Bearer ${access}`,
   };
@@ -83,7 +83,7 @@ export async function getUser(access: string, dispatch): Promise<UserType | unde
     if (jsonData.detail === 'Given token not valid for any token type') {
       const refreshToken = store.getState().registration.registration.refresh;
 
-      const refreshUrl = 'https://roksi-back.fly.dev/api/user/token-refresh/';
+      const refreshUrl = 'https://roksiart-gallery.shop/api/user/token-refresh/';
 
       const refreshHeaders = {
         Authorization: `Bearer ${refreshToken}`,
@@ -123,7 +123,7 @@ export async function getUser(access: string, dispatch): Promise<UserType | unde
 }
 
 export async function getBooking(access): Promise<BookingItem[] | undefined> {
-  const apiUrl = 'https://roksi-back.fly.dev/api/orders/';
+  const apiUrl = 'https://roksiart-gallery.shop/api/orders/';
 
   const accessToken = access;
 
@@ -153,7 +153,7 @@ export async function getBooking(access): Promise<BookingItem[] | undefined> {
 }
 
 export async function getOptions(): Promise<Option[]> {
-  const apiUrl = 'https://roksi-back.fly.dev/api/categories/';
+  const apiUrl = 'https://roksiart-gallery.shop/api/categories/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -178,7 +178,7 @@ export const handleChart = async (currentAction: string, id: number) => {
       action: currentAction,
     };
 
-    const url = 'https://roksi-back.fly.dev/api/cart/';
+    const url = 'https://roksiart-gallery.shop/api/cart/';
 
     await axios.post(url, data);
   } catch (error) {
