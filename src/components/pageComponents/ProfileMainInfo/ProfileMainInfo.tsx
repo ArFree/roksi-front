@@ -63,7 +63,7 @@ export const ProfileMainInfo:React.FC<Props> = ({noProfile}) => {
         }
       };
   
-      const url = 'https://roksi-back.fly.dev/api/user/me/';
+      const url = 'https://roksiart-gallery.shop/api/user/me/';
   
       const requestData = {
         first_name: firstName,

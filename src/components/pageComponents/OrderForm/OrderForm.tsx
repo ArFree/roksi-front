@@ -106,7 +106,7 @@ export const OrderForm = () => {
       });
     } else {
       try {
-        const url = 'https://roksi-back.fly.dev/api/orders/';
+        const url = 'https://roksiart-gallery.shop/api/orders/';
   
         const orderData = {
           email: email,

@@ -49,7 +49,7 @@ useEffect(() => {
         }
       };
   
-      const url = `https://roksi-back.fly.dev/api/products/${id}/favourite/`;
+      const url = `https://roksiart-gallery.shop/api/products/${id}/favourite/`;
       await axios.post(url, null, config);
       setIsLike(!isLike)
     } catch (error) {
@@ -66,7 +66,7 @@ const handleChart = async () => {
       action: currentAction,
     };
 
-    const url = 'https://roksi-back.fly.dev/api/cart/';
+    const url = 'https://roksiart-gallery.shop/api/cart/';
 
     await axios.post(url, data);
 

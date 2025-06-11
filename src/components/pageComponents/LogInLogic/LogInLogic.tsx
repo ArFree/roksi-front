@@ -63,7 +63,7 @@ export const LogInLogic = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('https://roksi-back.fly.dev/api/user/login/', {
+      const response = await axios.post('https://roksiart-gallery.shop/api/user/login/', {
         email: values.email,
         password: values.password,
       });

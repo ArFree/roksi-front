@@ -86,7 +86,7 @@ const handleChart = async () => {
       action: currentAction,
     };
 
-    const url = 'https://roksi-back.fly.dev/api/cart/';
+    const url = 'https://roksiart-gallery.shop/api/cart/';
 
     await axios.post(url, data);
 

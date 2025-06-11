@@ -90,7 +90,7 @@ export const SignUpLogic = () => {
       });
     } else {
       try {
-        await axios.post('https://roksi-back.fly.dev/api/user/register/', {
+        await axios.post('https://roksiart-gallery.shop/api/user/register/', {
           email: values.email,
           password: values.password,
           confirm_password: values.confirm_password,
